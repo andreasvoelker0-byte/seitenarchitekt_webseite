@@ -2263,7 +2263,7 @@ body.modal-open {
   }
 
   .nav-logo {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
   }
 
   .mobile-menu {
@@ -2272,26 +2272,30 @@ body.modal-open {
   }
 
   .mobile-menu a {
-    font-size: 16px;
-    line-height: 1.45;
+    font-size: 1.4rem;
+    line-height: 1.5;
     padding: 12px 0;
   }
 
   h1 {
-    font-size: clamp(2.2rem, 8.8vw, 2.9rem);
-    line-height: 1.14;
+    font-size: clamp(2.7rem, 10.5vw, 3.5rem);
+    line-height: 1.12;
   }
 
   h2 {
-    font-size: clamp(1.85rem, 7vw, 2.35rem);
-    line-height: 1.18;
+    font-size: clamp(2.15rem, 8.5vw, 2.9rem);
+    line-height: 1.14;
   }
 
   h3 {
-    font-size: clamp(1.35rem, 5vw, 1.75rem);
-    line-height: 1.24;
+    font-size: clamp(1.8rem, 6.5vw, 2.25rem);
+    line-height: 1.18;
   }
 
+  main p,
+  section p,
+  main li,
+  section li,
   .section-header p,
   .hero-sub,
   .about-prose-grid p,
@@ -2325,8 +2329,8 @@ body.modal-open {
   .modal-form-header p,
   .modal-step p,
   .modal-privacy {
-    font-size: 16px;
-    line-height: 1.75;
+    font-size: 1.5rem;
+    line-height: 1.72;
   }
 
   .label,
@@ -2339,7 +2343,7 @@ body.modal-open {
   .blog-dynamic-date,
   .footer-col h4,
   .package-badge {
-    font-size: 14px;
+    font-size: 1.25rem;
   }
 
   .btn,
@@ -2347,8 +2351,8 @@ body.modal-open {
   .form-group select,
   .form-group textarea,
   .form-group label {
-    font-size: 16px;
-    line-height: 1.5;
+    font-size: 1.35rem;
+    line-height: 1.48;
   }
 
   .hero h1,
@@ -2369,8 +2373,8 @@ body.modal-open {
   .value-item h3,
   .step-title,
   .package-head h3 {
-    font-size: 1.42rem;
-    line-height: 1.28;
+    font-size: 1.85rem;
+    line-height: 1.24;
   }
 
   .footer-col ul {
@@ -2378,7 +2382,7 @@ body.modal-open {
   }
 
   .hero-actions {
-    gap: 12px;
+    gap: 16px;
   }
 
   .hero-actions .btn,
@@ -2388,7 +2392,7 @@ body.modal-open {
   }
 
   .about-inner {
-    gap: 28px;
+    gap: 34px;
     align-items: start;
   }
 
@@ -2406,12 +2410,27 @@ body.modal-open {
     align-items: flex-start;
   }
 
+  h1,
+  h2,
+  h3,
+  main p,
+  section p,
+  main li,
+  section li,
   .article-layout h1,
   .article-layout h2,
   .article-layout p,
   .article-layout li {
     overflow-wrap: anywhere;
     word-break: break-word;
+    hyphens: auto;
+  }
+
+  .subpage-portfolio .label,
+  .subpage-blog .label,
+  .subpage-blog-article .label {
+    font-size: 1.25rem;
+    line-height: 1.45;
   }
 
   .footer-legal {
@@ -2427,18 +2446,18 @@ body.modal-open {
   }
 
   h1 {
-    font-size: clamp(2.28rem, 10.5vw, 2.7rem);
-    line-height: 1.12;
+    font-size: clamp(2.95rem, 11.5vw, 3.55rem);
+    line-height: 1.1;
   }
 
   h2 {
-    font-size: clamp(1.95rem, 8.5vw, 2.25rem);
-    line-height: 1.16;
+    font-size: clamp(2.35rem, 9.2vw, 2.85rem);
+    line-height: 1.12;
   }
 
   h3 {
-    font-size: clamp(1.42rem, 6.4vw, 1.68rem);
-    line-height: 1.22;
+    font-size: clamp(1.95rem, 7vw, 2.25rem);
+    line-height: 1.16;
   }
 
   .hero {
@@ -2446,9 +2465,9 @@ body.modal-open {
   }
 
   .hero-sub {
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 28px;
+    font-size: 1.5rem;
+    line-height: 1.72;
+    margin-bottom: 30px;
   }
 
   .about-photo {
@@ -2456,7 +2475,7 @@ body.modal-open {
   }
 
   .btn {
-    font-size: 16px;
-    padding: 13px 18px;
+    font-size: 1.35rem;
+    padding: 14px 20px;
   }
 }

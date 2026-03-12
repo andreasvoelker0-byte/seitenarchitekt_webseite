@@ -24,6 +24,7 @@ const RESPONSIVE_PAGES = [
 const BREAKPOINTS = [
   { name: '320', width: 320, height: 780 },
   { name: '375', width: 375, height: 812 },
+  { name: '480', width: 480, height: 900 },
   { name: '768', width: 768, height: 1024 },
   { name: '1024', width: 1024, height: 900 },
   { name: '1440', width: 1440, height: 1000 }
@@ -122,7 +123,7 @@ async function assertNoAboutSectionOverlap(page, viewportWidth, pagePath, contex
   if (!info) return;
   expect(info.overlap, `${contextLabel}: about photo/content overlap detected (photoBottom=${info.photoBottom}, contentTop=${info.contentTop})`).toBeFalsy();
 }
-async function assertReadabilityBaseline(page, contextLabel) {
+async function assertReadabilityBaseline(page, contextLabel, viewportWidth) {
   const metrics = await page.evaluate(() => {
     function visible(el) {
       const rect = el.getBoundingClientRect();
@@ -149,12 +150,16 @@ async function assertReadabilityBaseline(page, contextLabel) {
     return { h1Size, pFontSize, pLineHeight, metaSize };
   });
 
+  const minBodySize = viewportWidth <= 768 ? 24 : 14;
+  const minLineHeight = viewportWidth <= 768 ? 34 : 19;
+  const minMetaSize = viewportWidth <= 768 ? 20 : 12;
+
   expect(metrics.h1Size, `${contextLabel}: H1 too small`).toBeGreaterThanOrEqual(28);
-  expect(metrics.pFontSize, `${contextLabel}: body/support text too small`).toBeGreaterThanOrEqual(14);
-  expect(metrics.pLineHeight, `${contextLabel}: line-height too tight`).toBeGreaterThanOrEqual(19);
+  expect(metrics.pFontSize, `${contextLabel}: body/support text too small`).toBeGreaterThanOrEqual(minBodySize);
+  expect(metrics.pLineHeight, `${contextLabel}: line-height too tight`).toBeGreaterThanOrEqual(minLineHeight);
 
   if (metrics.metaSize > 0) {
-    expect(metrics.metaSize, `${contextLabel}: meta/label text too small`).toBeGreaterThanOrEqual(12);
+    expect(metrics.metaSize, `${contextLabel}: meta/label text too small`).toBeGreaterThanOrEqual(minMetaSize);
   }
 }
 
@@ -196,7 +201,7 @@ test.describe('responsive regression QA checks', () => {
         await assertNoCriticalHorizontalClipping(page, context);
         await assertNoAboutSectionOverlap(page, bp.width, pagePath, context);
         await assertNavigationWorks(page, bp.width, context);
-        await assertReadabilityBaseline(page, context);
+        await assertReadabilityBaseline(page, context, bp.width);
       }
     });
   }
