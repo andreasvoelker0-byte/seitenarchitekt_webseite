@@ -2261,7 +2261,7 @@ body.modal-open {
   }
 
   .nav-logo {
-    font-size: 1.15rem;
+    font-size: 1.2rem;
   }
 
   .mobile-menu {
@@ -2270,8 +2270,24 @@ body.modal-open {
   }
 
   .mobile-menu a {
-    font-size: 15px;
-    padding: 11px 0;
+    font-size: 16px;
+    line-height: 1.45;
+    padding: 12px 0;
+  }
+
+  h1 {
+    font-size: clamp(2.2rem, 8.8vw, 2.9rem);
+    line-height: 1.14;
+  }
+
+  h2 {
+    font-size: clamp(1.85rem, 7vw, 2.35rem);
+    line-height: 1.18;
+  }
+
+  h3 {
+    font-size: clamp(1.35rem, 5vw, 1.75rem);
+    line-height: 1.24;
   }
 
   .section-header p,
@@ -2307,8 +2323,8 @@ body.modal-open {
   .modal-form-header p,
   .modal-step p,
   .modal-privacy {
-    font-size: 15px;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 1.75;
   }
 
   .label,
@@ -2321,7 +2337,7 @@ body.modal-open {
   .blog-dynamic-date,
   .footer-col h4,
   .package-badge {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .btn,
@@ -2329,7 +2345,34 @@ body.modal-open {
   .form-group select,
   .form-group textarea,
   .form-group label {
-    font-size: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .hero h1,
+  .article-header h1 {
+    margin-bottom: 18px;
+  }
+
+  .section-header p {
+    margin-top: 14px;
+  }
+
+  .service-card h3,
+  .portfolio-info h3,
+  .blog-body h3,
+  .blog-dynamic-card h3,
+  .concept-body h3,
+  .about-card h3,
+  .value-item h3,
+  .step-title,
+  .package-head h3 {
+    font-size: 1.42rem;
+    line-height: 1.28;
+  }
+
+  .footer-col ul {
+    gap: 14px;
   }
 
   .hero-actions {
@@ -2382,15 +2425,18 @@ body.modal-open {
   }
 
   h1 {
-    font-size: clamp(2rem, 10vw, 2.45rem);
+    font-size: clamp(2.28rem, 10.5vw, 2.7rem);
+    line-height: 1.12;
   }
 
   h2 {
-    font-size: clamp(1.55rem, 7.8vw, 2rem);
+    font-size: clamp(1.95rem, 8.5vw, 2.25rem);
+    line-height: 1.16;
   }
 
   h3 {
-    font-size: clamp(1.15rem, 6vw, 1.4rem);
+    font-size: clamp(1.42rem, 6.4vw, 1.68rem);
+    line-height: 1.22;
   }
 
   .hero {
@@ -2398,6 +2444,8 @@ body.modal-open {
   }
 
   .hero-sub {
+    font-size: 16px;
+    line-height: 1.8;
     margin-bottom: 28px;
   }
 
@@ -2406,6 +2454,7 @@ body.modal-open {
   }
 
   .btn {
+    font-size: 16px;
     padding: 13px 18px;
   }
 }
