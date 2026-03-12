@@ -1634,6 +1634,7 @@ body.modal-open {
     padding: 32px 20px;
   }
 }
+
 /* ============================================================
    ABOUT PAGE
    ============================================================ */
@@ -1714,6 +1715,7 @@ body.modal-open {
 }
 
 @media (max-width: 1024px) {
+
   .about-cards-grid,
   .value-grid {
     grid-template-columns: 1fr;
@@ -2229,9 +2231,6 @@ body.modal-open {
   }
 
   .article-cover-placeholder {
-    min-height: 190px;
+    min-height: 290px;
   }
 }
-
-
-
