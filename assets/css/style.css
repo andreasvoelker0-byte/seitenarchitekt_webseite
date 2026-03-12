@@ -1805,7 +1805,7 @@ body.modal-open {
 }
 
 .package-benefit {
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 1.7;
   color: var(--mid);
   margin-bottom: 16px;

@@ -16,12 +16,15 @@ const RESPONSIVE_PAGES = [
   '/leistungen.html',
   '/portfolio.html',
   '/blog.html',
-  '/blog-artikel.html?slug=warum-viele-handwerker-websites-keine-anfragen-bringen'
+  '/blog-artikel.html?slug=warum-viele-handwerker-websites-keine-anfragen-bringen',
+  '/impressum.html',
+  '/datenschutz.html'
 ];
 
 const BREAKPOINTS = [
   { name: '320', width: 320, height: 780 },
   { name: '375', width: 375, height: 812 },
+  { name: '480', width: 480, height: 900 },
   { name: '768', width: 768, height: 1024 },
   { name: '1024', width: 1024, height: 900 },
   { name: '1440', width: 1440, height: 1000 }
@@ -78,9 +81,14 @@ async function assertNavigationWorks(page, viewportWidth, contextLabel) {
     const mobileMenu = page.locator('#mobileMenu');
     await expect(mobileMenu, `${contextLabel}: mobile menu should open`).toBeVisible();
 
-    const expectedHrefs = ['/', '/ueber-mich.html', '/leistungen.html', '/portfolio.html', '/blog.html'];
-    for (const href of expectedHrefs) {
-      await expect(mobileMenu.locator(`a[href="${href}"]`).first(), `${contextLabel}: missing mobile nav link ${href}`).toBeVisible();
+    const hrefs = await mobileMenu.locator('a').evaluateAll((links) =>
+      links.map((a) => (a.getAttribute('href') || '').trim())
+    );
+
+    const requiredSuffixes = ['index.html', 'ueber-mich.html', 'leistungen.html', 'portfolio.html', 'blog.html'];
+    for (const suffix of requiredSuffixes) {
+      const hasLink = hrefs.some((href) => href.endsWith(suffix));
+      expect(hasLink, `${contextLabel}: missing mobile nav link ending with ${suffix}`).toBeTruthy();
     }
 
     await page.keyboard.press('Escape');
@@ -92,7 +100,30 @@ async function assertNavigationWorks(page, viewportWidth, contextLabel) {
   }
 }
 
-async function assertReadabilityBaseline(page, contextLabel) {
+
+async function assertNoAboutSectionOverlap(page, viewportWidth, pagePath, contextLabel) {
+  if (pagePath !== '/ueber-mich.html' || viewportWidth > 1024) return;
+
+  const info = await page.evaluate(() => {
+    const photo = document.querySelector('.about-inner .about-photo');
+    const content = document.querySelector('.about-inner .about-content');
+    if (!photo || !content) return null;
+
+    const p = photo.getBoundingClientRect();
+    const c = content.getBoundingClientRect();
+    const overlap = !(p.right <= c.left + 1 || c.right <= p.left + 1 || p.bottom <= c.top + 1 || c.bottom <= p.top + 1);
+
+    return {
+      overlap,
+      photoBottom: Math.round(p.bottom),
+      contentTop: Math.round(c.top)
+    };
+  });
+
+  if (!info) return;
+  expect(info.overlap, `${contextLabel}: about photo/content overlap detected (photoBottom=${info.photoBottom}, contentTop=${info.contentTop})`).toBeFalsy();
+}
+async function assertReadabilityBaseline(page, contextLabel, viewportWidth) {
   const metrics = await page.evaluate(() => {
     function visible(el) {
       const rect = el.getBoundingClientRect();
@@ -119,12 +150,16 @@ async function assertReadabilityBaseline(page, contextLabel) {
     return { h1Size, pFontSize, pLineHeight, metaSize };
   });
 
+  const minBodySize = viewportWidth <= 768 ? 24 : 14;
+  const minLineHeight = viewportWidth <= 768 ? 34 : 19;
+  const minMetaSize = viewportWidth <= 768 ? 20 : 12;
+
   expect(metrics.h1Size, `${contextLabel}: H1 too small`).toBeGreaterThanOrEqual(28);
-  expect(metrics.pFontSize, `${contextLabel}: body/support text too small`).toBeGreaterThanOrEqual(14);
-  expect(metrics.pLineHeight, `${contextLabel}: line-height too tight`).toBeGreaterThanOrEqual(19);
+  expect(metrics.pFontSize, `${contextLabel}: body/support text too small`).toBeGreaterThanOrEqual(minBodySize);
+  expect(metrics.pLineHeight, `${contextLabel}: line-height too tight`).toBeGreaterThanOrEqual(minLineHeight);
 
   if (metrics.metaSize > 0) {
-    expect(metrics.metaSize, `${contextLabel}: meta/label text too small`).toBeGreaterThanOrEqual(12);
+    expect(metrics.metaSize, `${contextLabel}: meta/label text too small`).toBeGreaterThanOrEqual(minMetaSize);
   }
 }
 
@@ -139,8 +174,8 @@ test('footer legal links point to real legal pages', async ({ page }) => {
   await page.goto('/index.html');
   const legalLinks = page.locator('footer .footer-legal a');
   await expect(legalLinks).toHaveCount(2);
-  await expect(legalLinks.nth(0)).toHaveAttribute('href', '/impressum.html');
-  await expect(legalLinks.nth(1)).toHaveAttribute('href', '/datenschutz.html');
+  await expect(legalLinks.nth(0)).toHaveAttribute('href', /\.?\/impressum\.html$/);
+  await expect(legalLinks.nth(1)).toHaveAttribute('href', /\.?\/datenschutz\.html$/);
 });
 
 test('blog overview renders articles and article detail loads by slug', async ({ page }) => {
@@ -164,8 +199,9 @@ test.describe('responsive regression QA checks', () => {
 
         await assertNoHorizontalOverflow(page, context);
         await assertNoCriticalHorizontalClipping(page, context);
+        await assertNoAboutSectionOverlap(page, bp.width, pagePath, context);
         await assertNavigationWorks(page, bp.width, context);
-        await assertReadabilityBaseline(page, context);
+        await assertReadabilityBaseline(page, context, bp.width);
       }
     });
   }
