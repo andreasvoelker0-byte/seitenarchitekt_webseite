@@ -21,7 +21,7 @@
   function articleLink(slug) {
     var encoded = encodeURIComponent(slug);
     // Use rewrite-friendly route and keep hash fallback.
-    return 'blog-artikel?slug=' + encoded + '#slug=' + encoded;
+    return './blog-artikel.html?slug=' + encoded + '#slug=' + encoded;
   }
 
   function getSlugFromCurrentUrl() {
@@ -212,6 +212,7 @@
     }
   });
 })();
+
 
 
 
