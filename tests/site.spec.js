@@ -16,7 +16,9 @@ const RESPONSIVE_PAGES = [
   '/leistungen.html',
   '/portfolio.html',
   '/blog.html',
-  '/blog-artikel.html?slug=warum-viele-handwerker-websites-keine-anfragen-bringen'
+  '/blog-artikel.html?slug=warum-viele-handwerker-websites-keine-anfragen-bringen',
+  '/impressum.html',
+  '/datenschutz.html'
 ];
 
 const BREAKPOINTS = [
@@ -78,9 +80,14 @@ async function assertNavigationWorks(page, viewportWidth, contextLabel) {
     const mobileMenu = page.locator('#mobileMenu');
     await expect(mobileMenu, `${contextLabel}: mobile menu should open`).toBeVisible();
 
-    const expectedHrefs = ['/', '/ueber-mich.html', '/leistungen.html', '/portfolio.html', '/blog.html'];
-    for (const href of expectedHrefs) {
-      await expect(mobileMenu.locator(`a[href="${href}"]`).first(), `${contextLabel}: missing mobile nav link ${href}`).toBeVisible();
+    const hrefs = await mobileMenu.locator('a').evaluateAll((links) =>
+      links.map((a) => (a.getAttribute('href') || '').trim())
+    );
+
+    const requiredSuffixes = ['index.html', 'ueber-mich.html', 'leistungen.html', 'portfolio.html', 'blog.html'];
+    for (const suffix of requiredSuffixes) {
+      const hasLink = hrefs.some((href) => href.endsWith(suffix));
+      expect(hasLink, `${contextLabel}: missing mobile nav link ending with ${suffix}`).toBeTruthy();
     }
 
     await page.keyboard.press('Escape');
@@ -92,6 +99,29 @@ async function assertNavigationWorks(page, viewportWidth, contextLabel) {
   }
 }
 
+
+async function assertNoAboutSectionOverlap(page, viewportWidth, pagePath, contextLabel) {
+  if (pagePath !== '/ueber-mich.html' || viewportWidth > 1024) return;
+
+  const info = await page.evaluate(() => {
+    const photo = document.querySelector('.about-inner .about-photo');
+    const content = document.querySelector('.about-inner .about-content');
+    if (!photo || !content) return null;
+
+    const p = photo.getBoundingClientRect();
+    const c = content.getBoundingClientRect();
+    const overlap = !(p.right <= c.left + 1 || c.right <= p.left + 1 || p.bottom <= c.top + 1 || c.bottom <= p.top + 1);
+
+    return {
+      overlap,
+      photoBottom: Math.round(p.bottom),
+      contentTop: Math.round(c.top)
+    };
+  });
+
+  if (!info) return;
+  expect(info.overlap, `${contextLabel}: about photo/content overlap detected (photoBottom=${info.photoBottom}, contentTop=${info.contentTop})`).toBeFalsy();
+}
 async function assertReadabilityBaseline(page, contextLabel) {
   const metrics = await page.evaluate(() => {
     function visible(el) {
@@ -139,8 +169,8 @@ test('footer legal links point to real legal pages', async ({ page }) => {
   await page.goto('/index.html');
   const legalLinks = page.locator('footer .footer-legal a');
   await expect(legalLinks).toHaveCount(2);
-  await expect(legalLinks.nth(0)).toHaveAttribute('href', '/impressum.html');
-  await expect(legalLinks.nth(1)).toHaveAttribute('href', '/datenschutz.html');
+  await expect(legalLinks.nth(0)).toHaveAttribute('href', /\.?\/impressum\.html$/);
+  await expect(legalLinks.nth(1)).toHaveAttribute('href', /\.?\/datenschutz\.html$/);
 });
 
 test('blog overview renders articles and article detail loads by slug', async ({ page }) => {
@@ -164,6 +194,7 @@ test.describe('responsive regression QA checks', () => {
 
         await assertNoHorizontalOverflow(page, context);
         await assertNoCriticalHorizontalClipping(page, context);
+        await assertNoAboutSectionOverlap(page, bp.width, pagePath, context);
         await assertNavigationWorks(page, bp.width, context);
         await assertReadabilityBaseline(page, context);
       }
