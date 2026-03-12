@@ -1,0 +1,27 @@
+﻿{
+  "name": "seitenarchitekt_webseite",
+  "version": "1.0.0",
+  "description": "Dieses Repository enthält den Quellcode meiner Webseite.",
+  "main": "index.js",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "lint": "node scripts/lint.mjs",
+    "test": "playwright test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andreasvoelker0-byte/seitenarchitekt_webseite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/andreasvoelker0-byte/seitenarchitekt_webseite/issues"
+  },
+  "homepage": "https://github.com/andreasvoelker0-byte/seitenarchitekt_webseite#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.4.0"
+  }
+}

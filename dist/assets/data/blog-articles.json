@@ -1,0 +1,184 @@
+﻿{
+  "articles": [
+    {
+      "title": "Warum viele Handwerker-Websites keine Anfragen bringen",
+      "slug": "warum-viele-handwerker-websites-keine-anfragen-bringen",
+      "date": "2026-03-12",
+      "category": "Webdesign",
+      "teaser": "Viele Seiten sehen ordentlich aus, führen Besucher aber nicht zur Kontaktaufnahme. Entscheidend ist die richtige Struktur, nicht nur die Optik.",
+      "image": "",
+      "author": "Andreas Völker",
+      "readingTime": "6 Min.",
+      "featured": true,
+      "metaTitle": "Warum viele Handwerker-Websites keine Anfragen bringen | SeitenArchitekt Blog",
+      "metaDescription": "Die häufigsten Gründe, warum Handwerker-Websites trotz Traffic zu wenig Anfragen erzeugen und wie eine klare Struktur hilft.",
+      "content": {
+        "intro": "Eine Handwerker-Website erfüllt ihren Zweck erst dann, wenn sie Vertrauen aufbaut, Leistungen verständlich erklärt und den nächsten Schritt zur Anfrage leicht macht.",
+        "sections": [
+          {
+            "heading": "Fehlende Klarheit im ersten Blick",
+            "text": "Viele Startseiten bleiben zu allgemein. Besucher sehen nicht sofort, welche Leistungen konkret angeboten werden, in welcher Region gearbeitet wird und wie die Kontaktaufnahme abläuft. Diese Unsicherheit kostet Anfragen." 
+          },
+          {
+            "heading": "Zu wenig Vertrauenssignale",
+            "text": "Wenn eine Website keine klare Leistungsstruktur, keine nachvollziehbaren Informationen und keine professionelle Gestaltung bietet, wirkt der Betrieb schnell beliebig. Gerade im Handwerk entscheidet Vertrauen oft schon vor dem Erstgespräch." 
+          },
+          {
+            "heading": "Kein sauberer Weg zur Kontaktaufnahme",
+            "text": "Unklare Call-to-Actions, versteckte Kontaktdaten oder überladene Seitenführung bremsen Interessenten. Eine gute Website führt Besucher schrittweise von der Information zur konkreten Anfrage." 
+          }
+        ]
+      }
+    },
+    {
+      "title": "Was eine gute Website für Handwerksbetriebe heute leisten muss",
+      "slug": "was-eine-gute-website-fuer-handwerksbetriebe-heute-leisten-muss",
+      "date": "2026-03-05",
+      "category": "Strategie",
+      "teaser": "Eine moderne Handwerker-Website ist kein digitales Prospekt, sondern ein aktiver Baustein für Sichtbarkeit, Vertrauen und planbare Anfragen.",
+      "image": "",
+      "author": "Andreas Völker",
+      "readingTime": "7 Min.",
+      "featured": false,
+      "metaTitle": "Was eine gute Website für Handwerksbetriebe leisten muss | SeitenArchitekt Blog",
+      "metaDescription": "Die wichtigsten Anforderungen an eine professionelle Handwerker-Website: Klarheit, mobile Nutzbarkeit, Vertrauen und gute Nutzerführung.",
+      "content": {
+        "intro": "Eine professionelle Website muss heute mehr können als Informationen bereitzustellen. Sie muss Orientierung geben, Kompetenz vermitteln und aktiv Anfragen unterstützen.",
+        "sections": [
+          {
+            "heading": "Leistungen klar und verständlich darstellen",
+            "text": "Besucher wollen in Sekunden verstehen, was genau angeboten wird. Eine präzise Leistungsdarstellung reduziert Rückfragen und erhöht die Wahrscheinlichkeit einer qualifizierten Kontaktaufnahme." 
+          },
+          {
+            "heading": "Mobile Nutzung konsequent mitdenken",
+            "text": "Ein großer Teil der Zugriffe kommt über Smartphones. Seitenstruktur, Lesbarkeit und Kontaktwege müssen mobil genauso überzeugend sein wie auf dem Desktop." 
+          },
+          {
+            "heading": "Vertrauen in der richtigen Reihenfolge aufbauen",
+            "text": "Ein professioneller Aufbau kombiniert Kompetenz, Nahbarkeit und klare Prozesse. So entsteht ein stimmiger Eindruck, der aus Interessenten echte Anfragen macht." 
+          }
+        ]
+      }
+    },
+    {
+      "title": "Warum mobile Optimierung für Handwerker entscheidend ist",
+      "slug": "warum-mobile-optimierung-fuer-handwerker-entscheidend-ist",
+      "date": "2026-02-27",
+      "category": "Responsive Design",
+      "teaser": "Kunden suchen oft unterwegs nach Handwerksleistungen. Ohne mobile Optimierung gehen Reichweite, Vertrauen und Anfragen verloren.",
+      "image": "",
+      "author": "Andreas Völker",
+      "readingTime": "5 Min.",
+      "featured": false,
+      "metaTitle": "Mobile Optimierung für Handwerker: Warum sie entscheidend ist | SeitenArchitekt Blog",
+      "metaDescription": "Wie mobile Optimierung Handwerksbetrieben hilft, besser gefunden zu werden und mehr Kontaktanfragen über die Website zu erhalten.",
+      "content": {
+        "intro": "Mobile Optimierung ist kein Extra. Für Handwerksbetriebe ist sie die Grundlage dafür, dass potenzielle Kunden die Website überhaupt sinnvoll nutzen können.",
+        "sections": [
+          {
+            "heading": "Erster Eindruck entsteht mobil",
+            "text": "Viele Interessenten öffnen die Website direkt aus der Google-Suche auf dem Smartphone. Wenn Inhalte zu klein sind oder das Layout unruhig wirkt, springt der Nutzer oft sofort ab." 
+          },
+          {
+            "heading": "Kontakt muss in Sekunden möglich sein",
+            "text": "Telefon, WhatsApp und Kontaktformular müssen mobil prominent, klickbar und schnell erreichbar sein. Jeder zusätzliche Schritt reduziert die Chance auf eine Anfrage." 
+          },
+          {
+            "heading": "Technik und Lesbarkeit gehören zusammen",
+            "text": "Schnelle Ladezeiten, klare Typografie und sinnvolle Abstände sorgen dafür, dass Inhalte auch unterwegs angenehm konsumierbar bleiben." 
+          }
+        ]
+      }
+    },
+    {
+      "title": "Wie Vertrauen auf einer Handwerker-Website entsteht",
+      "slug": "wie-vertrauen-auf-einer-handwerker-website-entsteht",
+      "date": "2026-02-18",
+      "category": "Vertrauen",
+      "teaser": "Vertrauen entsteht online durch Klarheit, professionelle Struktur und nachvollziehbare Informationen statt durch laute Werbeaussagen.",
+      "image": "",
+      "author": "Andreas Völker",
+      "readingTime": "6 Min.",
+      "featured": false,
+      "metaTitle": "Vertrauen auf Handwerker-Websites aufbauen | SeitenArchitekt Blog",
+      "metaDescription": "Welche Elemente auf Handwerker-Websites wirklich Vertrauen schaffen und warum Struktur wichtiger ist als reine Design-Effekte.",
+      "content": {
+        "intro": "Gerade bei handwerklichen Leistungen mit größerem Auftragsvolumen prüfen Besucher sehr genau, ob ein Betrieb seriös und professionell wirkt.",
+        "sections": [
+          {
+            "heading": "Klare Positionierung statt allgemeiner Aussagen",
+            "text": "Wer deutlich formuliert, welche Leistungen er anbietet und für wen, wirkt sicherer und kompetenter als eine Seite mit austauschbaren Formulierungen." 
+          },
+          {
+            "heading": "Professionelle Inhaltsstruktur",
+            "text": "Eine klare Reihenfolge aus Leistungen, Vorteilen und Kontaktwegen gibt Orientierung. Das senkt Unsicherheit und unterstützt die Entscheidungsfindung." 
+          },
+          {
+            "heading": "Konsistenter visueller Auftritt",
+            "text": "Typografie, Farben, Abstände und Bildsprache sollten zusammenpassen. Konsistenz vermittelt Verlässlichkeit und stärkt den Gesamteindruck." 
+          }
+        ]
+      }
+    },
+    {
+      "title": "Lokale Sichtbarkeit: Wie Kunden dich online finden",
+      "slug": "lokale-sichtbarkeit-wie-kunden-dich-online-finden",
+      "date": "2026-02-10",
+      "category": "Lokale SEO",
+      "teaser": "Wer lokal gesucht wird, muss lokal auffindbar sein. Eine klare Seitenstruktur hilft, in der Region sichtbar und relevant zu werden.",
+      "image": "",
+      "author": "Andreas Völker",
+      "readingTime": "7 Min.",
+      "featured": false,
+      "metaTitle": "Lokale Sichtbarkeit für Handwerksbetriebe verbessern | SeitenArchitekt Blog",
+      "metaDescription": "Praktische Grundlagen für lokale Sichtbarkeit von Handwerksbetrieben: Struktur, regionale Begriffe und klare Leistungsseiten.",
+      "content": {
+        "intro": "Viele Handwerksbetriebe gewinnen neue Kunden über regionale Suchanfragen. Damit das funktioniert, braucht es eine Website mit klarer lokaler Ausrichtung.",
+        "sections": [
+          {
+            "heading": "Regionale Begriffe sinnvoll einsetzen",
+            "text": "Leistungsseiten sollten relevante Orte und Einsatzgebiete enthalten, ohne künstlich zu wirken. Wichtig ist eine natürliche, nachvollziehbare Formulierung." 
+          },
+          {
+            "heading": "Leistungs- und Standortbezug kombinieren",
+            "text": "Wenn Leistungen und Region gemeinsam strukturiert dargestellt werden, verstehen Suchmaschinen und Nutzer schneller, wofür der Betrieb steht." 
+          },
+          {
+            "heading": "Kontaktdaten und Erreichbarkeit klar zeigen",
+            "text": "Deutliche Kontaktinformationen und konsistente Unternehmensdaten unterstützen lokale Sichtbarkeit und stärken zusätzlich das Vertrauen." 
+          }
+        ]
+      }
+    },
+    {
+      "title": "Website oder Baukasten: Was für Handwerksbetriebe wirklich sinnvoll ist",
+      "slug": "website-oder-baukasten-was-fuer-handwerksbetriebe-wirklich-sinnvoll-ist",
+      "date": "2026-02-02",
+      "category": "Entscheidungshilfe",
+      "teaser": "Baukastenlösungen wirken schnell attraktiv, stoßen aber bei Struktur, Differenzierung und Weiterentwicklung oft früh an Grenzen.",
+      "image": "",
+      "author": "Andreas Völker",
+      "readingTime": "8 Min.",
+      "featured": false,
+      "metaTitle": "Website oder Baukasten für Handwerksbetriebe? | SeitenArchitekt Blog",
+      "metaDescription": "Vergleich zwischen Baukasten und individuell geplanter Website für Handwerksbetriebe: Vorteile, Grenzen und langfristige Perspektive.",
+      "content": {
+        "intro": "Ob Baukasten oder individuelle Website sinnvoller ist, hängt von den Zielen des Betriebs ab. Entscheidend ist, wie stark die Website künftig im Vertrieb unterstützen soll.",
+        "sections": [
+          {
+            "heading": "Baukasten: schneller Start, begrenzte Differenzierung",
+            "text": "Für einen schnellen Einstieg kann ein Baukasten funktionieren. Bei spezifischen Anforderungen an Struktur, Nutzerführung und Markenwirkung werden die Grenzen jedoch oft schnell sichtbar." 
+          },
+          {
+            "heading": "Individuelle Website: mehr Steuerbarkeit",
+            "text": "Eine individuell geplante Seite ermöglicht eine präzise Ausrichtung auf Zielgruppe, Leistungen und regionale Positionierung. Das zahlt langfristig auf Vertrauen und Anfragen ein." 
+          },
+          {
+            "heading": "Langfristige Perspektive entscheidet",
+            "text": "Wer die Website als strategisches Werkzeug versteht, profitiert meist von einer Lösung, die technisch und inhaltlich mit dem Betrieb mitwachsen kann." 
+          }
+        ]
+      }
+    }
+  ]
+}
