@@ -10,6 +10,7 @@ const requiredPages = [
   'leistungen.html',
   'portfolio.html',
   'portfolio/webdesign-elektrobetrieb.html',
+  'portfolio/webdesign-malerbetrieb.html',
   'blog.html',
   'blog-artikel.html',
   'impressum.html',
@@ -17,8 +18,8 @@ const requiredPages = [
 ];
 
 const ignoredDirs = new Set(['.git', 'dist', 'node_modules', 'playwright-report', 'test-results', 'tests']);
-const cssFiles = ['assets/css/style.css', 'assets/css/portfolio-elektrobetrieb.css'];
-const jsFiles = ['assets/js/script.js', 'assets/js/blog-cms.js', 'assets/js/portfolio-elektrobetrieb.js'];
+const cssFiles = ['assets/css/style.css', 'assets/css/portfolio-elektrobetrieb.css', 'assets/css/portfolio-malerbetrieb.css'];
+const jsFiles = ['assets/js/script.js', 'assets/js/blog-cms.js', 'assets/js/portfolio-elektrobetrieb.js', 'assets/js/portfolio-malerbetrieb.js'];
 
 async function collectFiles(dir, extension, bucket = []) {
   const entries = await fs.readdir(dir, { withFileTypes: true });
