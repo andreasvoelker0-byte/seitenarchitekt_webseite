@@ -1,4 +1,4 @@
-﻿import fs from 'node:fs/promises';
+import fs from 'node:fs/promises';
 import path from 'node:path';
 
 const root = process.cwd();
@@ -9,6 +9,7 @@ const entries = [
   'ueber-mich.html',
   'leistungen.html',
   'portfolio.html',
+  'portfolio',
   'blog.html',
   'blog-artikel.html',
   'impressum.html',

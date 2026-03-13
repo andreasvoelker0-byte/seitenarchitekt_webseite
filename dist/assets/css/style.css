@@ -1634,6 +1634,7 @@ body.modal-open {
     padding: 32px 20px;
   }
 }
+
 /* ============================================================
    ABOUT PAGE
    ============================================================ */
@@ -1714,6 +1715,7 @@ body.modal-open {
 }
 
 @media (max-width: 1024px) {
+
   .about-cards-grid,
   .value-grid {
     grid-template-columns: 1fr;
@@ -1803,7 +1805,7 @@ body.modal-open {
 }
 
 .package-benefit {
-  font-size: 1rem;
+  font-size: 1.5rem;
   line-height: 1.7;
   color: var(--mid);
   margin-bottom: 16px;
@@ -2232,6 +2234,3 @@ body.modal-open {
     min-height: 190px;
   }
 }
-
-
-
