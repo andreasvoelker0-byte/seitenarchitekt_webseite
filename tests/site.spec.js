@@ -10,6 +10,13 @@ const CORE_PAGES = [
   '/datenschutz.html'
 ];
 
+const PORTFOLIO_LANDINGPAGES = [
+  '/portfolio/webdesign-bauunternehmen.html',
+  '/portfolio/webdesign-elektrobetrieb.html',
+  '/portfolio/webdesign-malerbetrieb.html',
+  '/portfolio/webdesign-sanitaerbetrieb.html'
+];
+
 const RESPONSIVE_PAGES = [
   '/index.html',
   '/ueber-mich.html',
@@ -27,18 +34,47 @@ const BREAKPOINTS = [
   { name: '480', width: 480, height: 900 },
   { name: '768', width: 768, height: 1024 },
   { name: '1024', width: 1024, height: 900 },
+  { name: '1280', width: 1280, height: 960 },
+  { name: '1440', width: 1440, height: 1000 }
+];
+
+const PORTFOLIO_BREAKPOINTS = [
+  { name: '375', width: 375, height: 812 },
+  { name: '768', width: 768, height: 1024 },
   { name: '1440', width: 1440, height: 1000 }
 ];
 
 async function assertNoHorizontalOverflow(page, contextLabel) {
   const metrics = await page.evaluate(() => {
     const doc = document.documentElement;
-    return { scrollWidth: doc.scrollWidth, clientWidth: doc.clientWidth };
+    const viewportWidth = doc.clientWidth;
+    const offenders = Array.from(document.querySelectorAll('body *'))
+      .map((el) => {
+        const rect = el.getBoundingClientRect();
+        const style = window.getComputedStyle(el);
+        if (style.display === 'none' || style.visibility === 'hidden' || rect.width === 0 || rect.height === 0) {
+          return null;
+        }
+        if (rect.left < -1 || rect.right > viewportWidth + 1) {
+          return {
+            tag: el.tagName.toLowerCase(),
+            className: el.className || '',
+            text: (el.textContent || '').trim().slice(0, 70),
+            left: Math.round(rect.left),
+            right: Math.round(rect.right)
+          };
+        }
+        return null;
+      })
+      .filter(Boolean)
+      .slice(0, 6);
+
+    return { scrollWidth: doc.scrollWidth, clientWidth: doc.clientWidth, offenders };
   });
 
   expect(
     metrics.scrollWidth,
-    `${contextLabel}: horizontal overflow detected (scrollWidth=${metrics.scrollWidth}, clientWidth=${metrics.clientWidth})`
+    `${contextLabel}: horizontal overflow detected (scrollWidth=${metrics.scrollWidth}, clientWidth=${metrics.clientWidth}, offenders=${JSON.stringify(metrics.offenders)})`
   ).toBeLessThanOrEqual(metrics.clientWidth + 1);
 }
 
@@ -170,12 +206,27 @@ test('core pages are reachable and render a primary heading', async ({ page }) =
   }
 });
 
+test('portfolio landing pages are reachable for technical QA', async ({ page }) => {
+  for (const p of PORTFOLIO_LANDINGPAGES) {
+    await page.goto(p);
+    await expect(page.locator('h1').first()).toBeVisible();
+  }
+});
+
 test('footer legal links point to real legal pages', async ({ page }) => {
   await page.goto('/index.html');
   const legalLinks = page.locator('footer .footer-legal a');
   await expect(legalLinks).toHaveCount(2);
   await expect(legalLinks.nth(0)).toHaveAttribute('href', /\.?\/impressum\.html$/);
   await expect(legalLinks.nth(1)).toHaveAttribute('href', /\.?\/datenschutz\.html$/);
+});
+
+test('core pages do not contain placeholder anchor targets', async ({ page }) => {
+  for (const p of CORE_PAGES) {
+    await page.goto(p);
+    const placeholderLinks = page.locator('a[href="#"], a[href="./agb"], a[href="/agb"], a[href="agb"]');
+    await expect(placeholderLinks, `${p}: placeholder links should be removed or replaced`).toHaveCount(0);
+  }
 });
 
 test('blog overview renders articles and article detail loads by slug', async ({ page }) => {
@@ -202,6 +253,34 @@ test.describe('responsive regression QA checks', () => {
         await assertNoAboutSectionOverlap(page, bp.width, pagePath, context);
         await assertNavigationWorks(page, bp.width, context);
         await assertReadabilityBaseline(page, context, bp.width);
+      }
+    });
+  }
+});
+
+test.describe('portfolio landing pages responsive smoke checks', () => {
+  for (const bp of PORTFOLIO_BREAKPOINTS) {
+    test(`portfolio pages ${bp.name}px: reachable, no overflow, nav works`, async ({ page }) => {
+      await page.setViewportSize({ width: bp.width, height: bp.height });
+
+      for (const pagePath of PORTFOLIO_LANDINGPAGES) {
+        const context = `${bp.width}px ${pagePath}`;
+
+        await page.goto(pagePath, { waitUntil: 'domcontentloaded' });
+        await expect(page.locator('h1').first(), `${context}: missing H1`).toBeVisible();
+        await assertNoHorizontalOverflow(page, context);
+        await assertNoCriticalHorizontalClipping(page, context);
+
+        const menuButton = page.locator('#menuButton');
+        if (bp.width <= 840) {
+          await expect(menuButton, `${context}: mobile menu button should be visible`).toBeVisible();
+          await menuButton.click();
+          await expect(page.locator('#mobilePanel'), `${context}: mobile panel should open`).toBeVisible();
+          await page.keyboard.press('Escape');
+        } else {
+          await expect(menuButton, `${context}: mobile menu button should be hidden`).not.toBeVisible();
+          await expect(page.locator('.desktop-nav a').first(), `${context}: desktop nav should be visible`).toBeVisible();
+        }
       }
     });
   }
