@@ -1100,9 +1100,10 @@ nav {
 }
 
 .contact-methods {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 16px;
+  min-height: 404px;
 }
 
 .contact-method {
@@ -1118,6 +1119,7 @@ nav {
   color: var(--black);
   min-width: 0;
   max-width: 100%;
+  min-height: 0;
 }
 
 .contact-method:hover {
