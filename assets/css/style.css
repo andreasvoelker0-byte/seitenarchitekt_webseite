@@ -552,19 +552,19 @@ nav {
   align-items: start;
 }
 
-.problem-grid > *,
-.services-grid > *,
-.why-grid > *,
-.portfolio-grid > *,
-.blog-grid > *,
-.about-inner > *,
-.contact-grid > *,
-.package-grid > *,
-.concept-grid > *,
-.about-prose-grid > *,
-.about-cards-grid > *,
-.value-grid > *,
-.blog-dynamic-grid > * {
+.problem-grid>*,
+.services-grid>*,
+.why-grid>*,
+.portfolio-grid>*,
+.blog-grid>*,
+.about-inner>*,
+.contact-grid>*,
+.package-grid>*,
+.concept-grid>*,
+.about-prose-grid>*,
+.about-cards-grid>*,
+.value-grid>*,
+.blog-dynamic-grid>* {
   min-width: 0;
 }
 
@@ -1469,10 +1469,10 @@ footer {
   .why-item p,
   .step-desc,
   .portfolio-info p,
-  .about-content > p,
+  .about-content>p,
   .blog-body p,
   .final-cta p,
-  .contact-info > p,
+  .contact-info>p,
   .contact-method,
   .modal-intro,
   .modal-step p,
@@ -1864,7 +1864,7 @@ footer {
   font-size: 13px;
   color: var(--muted);
   text-align: center;
-  margin-top: 12px;
+  margin-top: 11px;
   line-height: 1.5;
 }
 
