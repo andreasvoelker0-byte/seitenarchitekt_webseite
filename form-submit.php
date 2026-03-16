@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     ]);
 }
 
-$recipient = getenv('CONTACT_FORM_TO') ?: 'kontakt@deine-domain.de';
+$recipient = 'andreasvoelker0@gmail.com';
 if ($recipient === 'kontakt@deine-domain.de') {
     respond(500, [
         'ok' => false,
@@ -57,15 +57,11 @@ $subjectPrefix = $formType === 'modal' ? 'Neue Anfrage (Modal)' : 'Neue Anfrage 
 $subjectRaw = $subjectPrefix . ' - SeitenArchitekt';
 $subject = '=?UTF-8?B?' . base64_encode($subjectRaw) . '?=';
 
-$host = $_SERVER['HTTP_HOST'] ?? 'seitenarchitekt.de';
-$safeHost = preg_replace('/[^a-zA-Z0-9.-]/', '', (string) $host);
-if ($safeHost === '') {
-    $safeHost = 'seitenarchitekt.de';
-}
+$formFrom = 'kontakt@seitenarchitekt.com';
 
 $headers = [];
-$headers[] = 'From: SeitenArchitekt Formular <no-reply@' . $safeHost . '>';
-$headers[] = 'Reply-To: ' . $email;
+$headers[] = 'From: SeitenArchitekt <' . $formFrom . '>';
+$headers[] = 'Reply-To: ' . $fullName . ' <' . $email . '>';
 $headers[] = 'Content-Type: text/plain; charset=UTF-8';
 $headers[] = 'X-Mailer: PHP/' . PHP_VERSION;
 
@@ -93,5 +89,5 @@ if (!$sent) {
 
 respond(200, [
     'ok' => true,
-    'message' => 'Danke! Deine Anfrage wurde erfolgreich gesendet.',
+    'message' => 'Danke! Deine Anfrage wurde erfolgreich gesendet. Ich melde mich zeitnah bei Ihnen zurück',
 ]);
