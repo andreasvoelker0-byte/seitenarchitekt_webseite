@@ -1838,6 +1838,20 @@ footer {
   line-height: 1.65;
 }
 
+.modal-title {
+  font-size: 44px;
+  line-height: 1.08;
+  font-family: 'DM Serif Display', serif;
+  margin-bottom: 16px;
+}
+
+.modal-form-title {
+  font-size: 32px;
+  line-height: 1.15;
+  font-family: 'DM Serif Display', serif;
+  margin-bottom: 10px;
+}
+
 /* Rechte Spalte */
 .modal-right {
   padding: 52px 44px;
