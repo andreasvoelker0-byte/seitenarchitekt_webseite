@@ -623,6 +623,11 @@ nav {
   margin-bottom: 6px;
 }
 
+.problem-card-title {
+  font-size: 1rem;
+  margin-bottom: 6px;
+}
+
 .problem-card p {
   font-size: 14px;
   color: var(--mid);
