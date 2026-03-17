@@ -11,30 +11,36 @@ document.addEventListener('DOMContentLoaded', function () {
   const mobileMenu  = document.getElementById('mobileMenu');
 
   function openMenu() {
+    if (!hamburger || !mobileMenu) return;
     hamburger.classList.add('open');
     mobileMenu.classList.add('open');
     document.body.style.overflow = 'hidden'; // prevent scroll while menu open
   }
 
   function closeMenu() {
+    if (!hamburger || !mobileMenu) return;
     hamburger.classList.remove('open');
     mobileMenu.classList.remove('open');
     document.body.style.overflow = '';
   }
 
-  hamburger.addEventListener('click', function (e) {
-    e.stopPropagation();
-    if (mobileMenu.classList.contains('open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
+  if (hamburger && mobileMenu) {
+    hamburger.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (mobileMenu.classList.contains('open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+  }
 
   // Close when a mobile menu link is clicked
-  mobileMenu.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', closeMenu);
-  });
+  if (mobileMenu) {
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+  }
 
   // Close when clicking outside the menu
   document.addEventListener('click', function (e) {
@@ -151,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     var error = document.createElement('p');
     error.className = 'field-error';
-    error.style.cssText = 'font-size:12px;color:#d4522a;margin-top:6px;';
+    error.style.cssText = 'font-size:1rem;color:#d4522a;margin-top:6px;line-height:1.5;';
     error.textContent = message;
     field.parentNode.appendChild(error);
 
@@ -224,6 +230,7 @@ document.addEventListener('DOMContentLoaded', function () {
      ---------------------------------------------------------- */
   var sections = document.querySelectorAll('section[id]');
   var navLinks = document.querySelectorAll('.nav-links a');
+  var currentPath = window.location.pathname.split('/').pop() || 'index.html';
 
   window.addEventListener('scroll', function () {
     var scrollPos = window.scrollY + 100;
@@ -234,7 +241,15 @@ document.addEventListener('DOMContentLoaded', function () {
       var id     = section.getAttribute('id');
 
       navLinks.forEach(function (link) {
-        if (link.getAttribute('href') === '/' + id || link.getAttribute('href') === '#' + id) {
+        var href = (link.getAttribute('href') || '').trim();
+        var normalizedHref = href.replace(/^\.\//, '');
+        var matchesSection =
+          href === '#' + id ||
+          href.endsWith('#' + id) ||
+          normalizedHref === id ||
+          normalizedHref === currentPath + '#' + id;
+
+        if (matchesSection) {
           if (scrollPos >= top && scrollPos < bottom) {
             link.style.color = '#ffffff';
           } else {

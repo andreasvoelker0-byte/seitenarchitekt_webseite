@@ -1,89 +1,74 @@
-# SCHRITT 2 — DIE 4 GEWERKE-SEITEN MÜSSEN WIE 4 UNTERSCHIEDLICHE WEBSITES WIRKEN
+# AGENTS.md
 
-## Ziel
+## Current mode
+This repository is currently in SEO and technical-fix mode.
 
-Die folgenden Seiten müssen gestalterisch vollständig neu gedacht werden:
+## Main workflow
+Work strictly one issue at a time.
 
-- webdesign-bauunternehmen.html
-- webdesign-elektrobetrieb.html
-- webdesign-malerbetrieb.html
-- webdesign-sanitaerbetrieb.html
+Before making any change, always:
+1. identify exactly one issue,
+2. explain what the issue is,
+3. explain why it matters,
+4. state whether it is directly fixable in the codebase,
+5. list the file(s) that would likely be changed,
+6. describe the exact planned fix.
 
-Der Inhalt und die thematische Ausrichtung sollen erhalten bleiben, aber das Design darf nicht nur variiert oder leicht differenziert werden.
+Then ask exactly:
+"Soll ich diesen Fix umsetzen oder zum nächsten Punkt gehen?"
 
-Ziel ist ausdrücklich, dass jede dieser Seiten so wirkt, als wäre sie eine eigenständige Website mit eigener gestalterischer DNA.
+Do not make any change before the user answers.
 
-## Harte Vorgabe
+If the user says no:
+- do not change anything,
+- continue with the next issue.
 
-Es ist nicht ausreichend:
-- einzelne neue Sektionen einzubauen
-- nur Karten, Icons oder Akzentfarben zu verändern
-- nur CSS pro Seite leicht anzupassen
-- nur den Hero-Bereich und 1 bis 2 Abschnitte zu verändern
-- die gleiche Grundstruktur mit leicht anderen Modulen weiterzuverwenden
+Never combine multiple fixes into one step.
 
-Das ist ausdrücklich nicht gewünscht.
+## Scope
+Only work on issues that are directly solvable in:
+- code,
+- project structure,
+- metadata,
+- assets,
+- server configuration,
+- build configuration.
 
-Stattdessen muss jede Seite in ihrer gesamten Seitengestaltung klar eigenständig wirken.
+## Verification rules
+If an SEO audit report or PDF is provided:
+- use it only as reference,
+- do not trust it blindly,
+- verify every reported issue in the actual code before proposing a fix,
+- if the issue is already solved or not applicable, say so.
 
-## Verpflichtende Unterschiede pro Seite
+## Priority
+Prioritize:
+1. critical issues,
+2. clearly verifiable issues,
+3. quick technical wins.
 
-Jede der 4 Seiten muss sich in allen oder fast allen der folgenden Punkte klar unterscheiden:
+## Constraints
+- Do not redesign pages unless the user explicitly asks.
+- Do not change architecture without asking.
+- Do not do broad refactoring.
+- Do not make cosmetic-only edits unless they are required for the fix.
+- Do not rewrite content aggressively.
+- Keep SEO improvements natural and avoid keyword stuffing.
 
-- Hero-Aufbau
-- Navigationswirkung innerhalb der Seite
-- Reihenfolge und Dramaturgie der Sektionen
-- Grid-Systeme
-- Kartenlogik
-- Bildsprache
-- Verhältnis von Text zu Bild
-- Typografische Wirkung
-- Weißraum und Rhythmus
-- CTA-Struktur
-- Vertrauenselemente
-- Projekt- oder Leistungsdarstellung
-- Abschlussbereich
-- mobile Darstellung der Sektionen
+## Excluded or limited topics
+The following should only be reported, not automatically fixed:
+- backlinks,
+- referring domains,
+- authority/offpage SEO,
+- external indexing issues,
+- third-party platform limitations.
 
-Die Seiten dürfen sich nicht wie dieselbe Layout-Vorlage mit ausgetauschtem Inhalt anfühlen.
+## Output after each approved fix
+After each implemented fix, briefly report:
+- which files were changed,
+- what was changed,
+- what improvement was achieved.
 
-## Verpflichtende Regel zur Struktur
-
-Wenn zwei Seiten noch denselben Grundaufbau haben, ist Schritt 2 nicht ausreichend umgesetzt.
-
-Mindestens folgende Dinge müssen sich je Seite spürbar unterscheiden:
-- Seitenrhythmus
-- Komponentenstil
-- Sektionsdramaturgie
-- visuelle Hierarchie
-- Verhältnis von emotionaler zu sachlicher Darstellung
-
-## Designziel pro Gewerk
-
-### Bauunternehmen
-Die Seite soll wirken wie eine eigenständige, architektonische, robuste Unternehmensseite mit klarer Rasterlogik, substanziellem Aufbau und sachlich-starker Präsentation.
-
-### Elektrobetrieb
-Die Seite soll wirken wie eine eigenständige, technische, präzise und systematische Website mit kontrollierter Informationslogik und moderner technischer Anmutung.
-
-### Malerbetrieb
-Die Seite soll wirken wie eine eigenständige, visuelle, atmosphärische und editorial geprägte Website mit stärkerer Bild- und Materialwirkung.
-
-### Sanitärbetrieb
-Die Seite soll wirken wie eine eigenständige, wohnnahe, saubere und hochwertige Website mit Bad-/Interior-Charakter, Vertrauensführung und optionaler Galerie- oder Projektinszenierung.
-
-## Verbot der Template-Logik
-
-Die 4 Seiten dürfen nicht auf derselben wahrnehmbaren Template-Logik basieren.
-
-Wenn beim Vergleich erkennbar bleibt, dass alle 4 Seiten nur Variationen derselben Ursprungsseite sind, ist die Aufgabe nicht erfüllt.
-
-## Definition of Done für Schritt 2
-
-Schritt 2 ist nur dann abgeschlossen, wenn:
-- jede der 4 Seiten wie eine eigene Website wirkt
-- die Unterschiede über Farben, Icons oder Einzelmodule weit hinausgehen
-- nicht nur einzelne Sektionen, sondern die gesamte Seitenlogik verändert wurde
-- jede Seite ein eigenes Designkonzept hat
-- keine Copy-and-paste-Wirkung mehr vorhanden ist
-- Desktop, Tablet und Mobile trotzdem sauber funktionieren
+## Stack awareness
+Adapt all recommendations to the actual stack in the repository.
+Do not assume React, Next.js, Astro, or plain HTML without checking first.
