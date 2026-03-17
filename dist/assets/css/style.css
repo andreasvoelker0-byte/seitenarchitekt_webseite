@@ -1263,30 +1263,17 @@ footer {
   margin-bottom: 24px;
 }
 
-.footer-socials {
-  display: flex;
-  gap: 12px;
-}
-
-.social-link {
-  width: 36px;
-  height: 36px;
-  background: rgba(255, 255, 255, 0.06);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.6);
-  transition: background 0.2s;
-}
-
-.social-link:hover {
-  background: var(--accent);
-  color: var(--white);
-}
-
 .footer-col h4 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+  margin-bottom: 20px;
+}
+
+.footer-title {
   font-family: 'DM Sans', sans-serif;
   font-size: 13px;
   font-weight: 600;
@@ -1829,6 +1816,12 @@ footer {
 }
 
 .modal-step h4 {
+  font-size: 0.95rem;
+  margin-bottom: 5px;
+  font-family: 'DM Serif Display', serif;
+}
+
+.modal-step-title {
   font-size: 0.95rem;
   margin-bottom: 5px;
   font-family: 'DM Serif Display', serif;

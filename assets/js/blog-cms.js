@@ -20,7 +20,7 @@
 
   function articleLink(slug) {
     var encoded = encodeURIComponent(slug);
-    return './blog-artikel.html?slug=' + encoded;
+    return './blog-artikel.html#slug=' + encoded;
   }
 
   function getSlugFromCurrentUrl() {
